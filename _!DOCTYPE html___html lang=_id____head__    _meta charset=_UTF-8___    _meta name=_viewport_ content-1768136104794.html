@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kado Spesial untuk Kak Arun!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-h-screen;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            color: #d63384;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            max-width: 90%;
+            border: 2px dashed #ffb6c1;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* KADO */
+        .gift-box-wrapper {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.5s;
+            animation: shake 2s infinite;
+            z-index: 15;
+        }
+
+        .gift-box-wrapper.open {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        .gift-lid {
+            background-color: #ff69b4;
+            width: 220px;
+            height: 50px;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            border-radius: 10px;
+            z-index: 2;
+            transition: top 0.5s ease-out, transform 0.5s ease-out;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .gift-box-wrapper.open .gift-lid {
+            top: -100px;
+            transform: rotateX(20deg) scale(0.8);
+        }
+
+        .gift-base {
+            background-color: #ffb6c1;
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 10px;
+            z-index: 1;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+        }
+
+        .ribbon-vertical {
+            background-color: #ffcc00;
+            width: 30px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .ribbon-horizontal {
+            background-color: #ffcc00;
+            width: 220px;
+            height: 30px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -10px;
+            z-index: 3;
+        }
+
+        .ribbon-bow {
+            background-color: #ffcc00;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: fly 3s linear forwards;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        @keyframes fly {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-600px) rotate(360deg) scale(0); opacity: 0; }
+        }
+
+        .hidden { display: none; }
+        .typing { font-weight: bold; line-height: 1.5; }
+        
+        .nama-ayu {
+            color: #b8860b;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+        }
+
+        .btn-universal {
+            background: linear-gradient(45deg, #ff85a2, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            font-weight: 500;
+        }
+
+        .btn-universal:hover {
+            background: linear-gradient(45deg, #ffb6c1, #ff85a2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-universal:active {
+            transform: translateY(1px);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 1.5s infinite;
+            z-index: 5;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        .header-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .message-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ff69b4;
+            margin: 1.5rem 0;
+        }
+
+        .special-message {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 5px solid #ff69b4;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 105, 180, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            color: #8b4513;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #b8860b;
+        }
+    </style>
+</head>
+<body onclick="spawnHearts(event)">
+
+    <div id="slide0" class="container">
+        <h1 class="header-title">Halo Kakak Arun... ✨</h1>
+        <p class="text-lg mb-6">Adik imut punya kado spesial buat Kakak!</p>
+        <div class="gift-box-wrapper" onclick="openGift()">
+            <div class="gift-lid"></div>
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+            <div class="ribbon-bow"></div>
+            <div class="gift-base"></div>
+        </div>
+        <p class="mt-4 text-gray-700">Tekan kadonya ya!</p>
+        <div class="mt-4">
+            <button class="btn-universal floating" onclick="showSparkles()">
+                <i class="fas fa-star mr-2"></i> Kado Spesial!
+            </button>
+        </div>
+    </div>
+
+    <div id="slide1" class="container hidden">
+        <p id="text1" class="typing text-xl"></p>
+        <div id="btn-next-1" class="hidden mt-6">
+            <button class="btn-universal" onclick="nextSlide(2)">
+                Oke, Adik Imut! 👋
+            </button>
+        </div>
+    </div>
+
+    <div id="slide2" class="container hidden">
+        <h2 class="text-2xl font-bold mb-6">Bagaimana perasaan Kakak hari ini?</h2>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <button class="btn-universal" onclick="nextSlide(3)">
+                😊 Senang Banget
+            </button>
+            <button class="btn-universal" onclick="nextSlide(3)">
+                🥺 Lagi Sedih
+            </button>
+            <button class="btn-universal" onclick="nextSlide(3)">
+                💪 Full Semangat!
+            </button>
+        </div>
+    </div>
+
+    <div id="slide3" class="container hidden">
+        <p id="text3" class="typing text-xl"></p>
+        <div class="mt-4">
+            <span class="nama-ayu">Ni Gusti Cokro Sri Ayu Nurazahra 🌸</span>
+        </div>
+        <div class="mt-6">
+            <button class="btn-universal" onclick="nextSlide(4)">
+                Buka Pesan Spesial! 🎁
+            </button>
+        </div>
+    </div>
+
+    <div id="slide4" class="container hidden">
+        <h2 class="text-2xl font-bold mb-6">Pesan Semangat untuk Kak Arun Besok!</h2>
+        <div class="special-message">
+            <p class="message-text">
+                Hai Kakak Arun, apapun yang terjadi hari ini,
+                ingat ya, besok adalah lembaran baru.
+                Adik imut selalu ada buat Kakak.
+            </p>
+            <p class="quote">
+                "**Semangat ya untuk besok!**<br>
+                Senyum terus, karena senyum Kakak itu indah! 🥰"
+            </p>
+            <p class="signature">Salam sayang dari adik imutmu:</p>
+            <span class="nama-ayu">Ni Gusti Cokro Sri Ayu Nurazahra</span>
+        </div>
+        <div class="mt-6">
+            <button class="btn-universal" onclick="location.reload()">
+                <i class="fas fa-redo mr-2"></i> Ulangi Kadonya 🤗
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function spawnHearts(e) {
+            for(let i=0; i<3; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = ['❤️', '💖', '✨', '🌸', '🌟'][Math.floor(Math.random() * 5)];
+                heart.style.left = (e ? e.clientX : Math.random() * window.innerWidth) + (Math.random() * 40 - 20) + 'px';
+                heart.style.top = (e ? e.clientY : window.innerHeight) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+
+        function showSparkles() {
+            for(let i=0; i<50; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 100);
+            }
+        }
+
+        function typeWriter(text, elementId, speed, callback) {
+            let i = 0;
+            let elem = document.getElementById(elementId);
+            elem.innerHTML = "";
+            function type() {
+                if (i < text.length) {
+                    elem.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        function openGift() {
+            document.querySelector('.gift-box-wrapper').classList.add('open');
+            // Ledakan lope-lope saat kado dibuka
+            for(let i=0; i<20; i++) setTimeout(spawnHearts, i * 80);
+            setTimeout(() => {
+                nextSlide(1);
+                typeWriter("Hai Kakak Arun, Selamat Malam... Gimana hari ini? Adik imut kangen tau! 😊", "text1", 80, () => {
+                    document.getElementById('btn-next-1').classList.remove('hidden');
+                });
+            }, 1000); // Tunda sebentar biar animasi kado selesai
+        }
+
+        function nextSlide(n) {
+            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+            document.getElementById('slide' + n).classList.remove('hidden');
+            if (n === 3) {
+                typeWriter("Apapun yang Kakak rasain, Kakak hebat banget hari ini! Jangan lupa istirahat ya, Kakak Arun sayang. Semangat terus! ✨", "text3", 60);
+            }
+            if (n === 4) {
+                 // Hujan hati terus menerus di slide terakhir
+                setInterval(spawnHearts, 400);
+            }
+        }
+
+        // Mulai tampilan awal
+        window.onload = () => {
+            document.getElementById('slide0').classList.remove('hidden');
+        };
+    </script>
+</body>
+</html>
